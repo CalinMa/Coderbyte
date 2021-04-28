@@ -1,0 +1,33 @@
+import java.util.*; 
+import java.io.*;
+
+class Main {
+
+  public static boolean CodelandUsernameValidation(String str) {
+    // code goes here  
+    return validUsername(str);
+  }
+
+  public static void main (String[] args) {  
+    // keep this function call here     
+    Scanner s = new Scanner(System.in);
+    System.out.print(CodelandUsernameValidation(s.nextLine())); 
+  }
+  public static boolean validUsername (String str) {
+    return checkLength(str) && startLetter(str) && onlyContains(str) && endUnderscore(str); 
+  }
+  public static boolean checkLength(String str){
+    int strLength = str.length();
+    return strLength <= 25 && strLength >= 4; 
+  }
+  public static boolean startLetter(String str){
+    char startChar = str.charAt(0);
+    return ((startChar >= 'a' && startChar <= 'z') || (startChar >= 'A' && startChar <= 'Z')); 
+  }
+  public static boolean onlyContains(String str){
+    return str.matches("[A-Za-z0-9_]+");
+  }
+  public static boolean endUnderscore(String str){
+    return !(str.charAt(str.length() - 1) == '_');
+  }
+}
